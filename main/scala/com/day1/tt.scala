@@ -1,21 +1,35 @@
 package com.day1
 
+import java.lang.reflect.Field
+
+import scala.reflect.runtime.universe
+
 class Afdsaf{
 
 }
 
 object tt {
     def main(args: Array[String]): Unit = {
-        val a: Afdsaf = new Afdsaf()
-        a.equals()
 
-        implicit def fuck(a: Double):Int={
-            val c = a-3
-            c.toInt
+
+        implicit def fuck(str: String):Int={
+//            Integer.parseInt(str)
+            53
         }
-//        val a: Int = 4.6
-//        println(a)
+        implicit def fuck2(str: String):Double={
+            java.lang.Double.parseDouble(str)
+//            5.6
+        }
+
+        val doubles: Array[String] = Array("", "23")
+        fi(doubles(0), doubles(1))
+
     }
+    def fi(str: Double, str2: Int): Unit ={
+        println(str)
+        println(str2)
+    }
+
 }
 
 
@@ -49,25 +63,23 @@ class MyOrdered[T] extends Ordered[T]{
 
 object Implicit_Conversions_with_Implicit_Parameters {
 
-    def main(args: Array[String]): Unit = {
+//    def func()
 
-        /**
-         * (1)bigger[T]为泛型函数
-         * (2)bigger(...)(...)该函数是柯里化的
-         * (3)第二个括号传入的是一个匿名函数，类型为T => Ordered[T] orders是隐式参数 输入类型为T类型， 返回类型为Ordered[T]类型
-         *
-         * */
-        def bigger[T](a: T, b: T)(implicit ordered: T => Ordered[T]) = {
-            /**
-             * ordered(a) > b中的">"是一个函数 具体定义在Ordered类中
-             * Source define:
-             *        def >  (that: A): Boolean = (this compare that) >  0
-             */
-            if (a > b) a else b   // if (a > b) a else b  这样写也可以
+    def main(args: Array[String]): Unit = {
+        val s = Array(1, 2, 3)
+//        val map= Map("fdaf" -> 2, "fdaffaa"->"fdf", "3rdef"->_)
+//        map.
+        for (i <- 1 to 3){
+            println(i)
         }
 
-        println(bigger(4, 3))                 //4
-//        println(bigger("Spark", "Hadoop"))    //Spark
-
+//        val bb: BB = new BB(for(i <- 1 to 3)yield i)
     }
+}
+
+class BB(    val sessionid: Int,
+             val advertisersid: Int,
+             val adorderid: Int)
+{
+    def getSessionid()=sessionid
 }
